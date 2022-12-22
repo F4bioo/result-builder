@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">ResultBuilder</string>
+    <string name="postal_code">Postal Code</string>
+    <string name="street">Street</string>
+    <string name="city">City</string>
+    <string name="state">State</string>
+    <string name="area_code">Area Code</string>
+    <string name="search">Search</string>
 </resources>
