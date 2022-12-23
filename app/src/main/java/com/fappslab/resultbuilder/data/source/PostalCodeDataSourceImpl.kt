@@ -7,7 +7,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
 const val GENERIC_ERROR_MESSAGE =
-    "Some thing went wrong. Please, check Internet Connection!"
+    "Something went wrong. Please, check Internet Connection!"
 
 class PostalCodeDataSourceImpl(
     private val service: PostalCodeService,

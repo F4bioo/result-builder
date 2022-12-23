@@ -17,7 +17,7 @@ class GetAddressUseCase(
 
     private fun Address.ifEmptyThrow(): Address {
         require(listOf(street, city, state, areaCode)
-            .all { it.isNotEmpty() }) { NOT_FOUND_ERROR_MESSAGE }
+            .any { it.isNotEmpty() }) { NOT_FOUND_ERROR_MESSAGE }
         return this
     }
 }
