@@ -1,4 +1,4 @@
-package com.fappslab.resultbuilder.arch
+package com.fappslab.resultbuilder.arch.resultbuilder
 
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch

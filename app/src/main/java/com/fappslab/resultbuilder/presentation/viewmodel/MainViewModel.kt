@@ -2,12 +2,12 @@ package com.fappslab.resultbuilder.presentation.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.fappslab.resultbuilder.arch.launchIn
-import com.fappslab.resultbuilder.arch.onCompletion
-import com.fappslab.resultbuilder.arch.onFailure
-import com.fappslab.resultbuilder.arch.onStart
-import com.fappslab.resultbuilder.arch.onSuccess
-import com.fappslab.resultbuilder.arch.runAsyncSafely
+import com.fappslab.resultbuilder.arch.resultbuilder.launchIn
+import com.fappslab.resultbuilder.arch.resultbuilder.onCompletion
+import com.fappslab.resultbuilder.arch.resultbuilder.onFailure
+import com.fappslab.resultbuilder.arch.resultbuilder.onStart
+import com.fappslab.resultbuilder.arch.resultbuilder.onSuccess
+import com.fappslab.resultbuilder.arch.resultbuilder.runAsyncSafely
 import com.fappslab.resultbuilder.domain.model.Address
 import com.fappslab.resultbuilder.domain.usecase.GetAddressUseCase
 import kotlinx.coroutines.flow.MutableSharedFlow

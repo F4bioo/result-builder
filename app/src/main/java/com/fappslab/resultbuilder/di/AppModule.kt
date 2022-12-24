@@ -1,7 +1,7 @@
-package com.fappslab.resultbuilder.data.di
+package com.fappslab.resultbuilder.di
 
 import com.fappslab.resultbuilder.BuildConfig
-import com.fappslab.resultbuilder.data.client.HttpClient
+import com.fappslab.resultbuilder.arch.network.HttpClient
 import com.fappslab.resultbuilder.data.client.HttpClientImpl
 import com.fappslab.resultbuilder.data.client.RetrofitClient
 import com.fappslab.resultbuilder.data.repository.PostalCodeRepositoryImpl
