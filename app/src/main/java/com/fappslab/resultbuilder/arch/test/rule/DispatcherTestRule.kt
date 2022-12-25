@@ -1,4 +1,4 @@
-package utils
+package com.fappslab.resultbuilder.arch.test.rule
 
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi

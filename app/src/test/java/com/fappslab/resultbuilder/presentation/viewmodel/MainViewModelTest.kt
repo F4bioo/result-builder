@@ -1,6 +1,7 @@
 package com.fappslab.resultbuilder.presentation.viewmodel
 
 import app.cash.turbine.test
+import com.fappslab.resultbuilder.arch.test.rule.DispatcherTestRule
 import com.fappslab.resultbuilder.data.source.GENERIC_ERROR_MESSAGE
 import com.fappslab.resultbuilder.domain.usecase.GetAddressUseCase
 import io.mockk.clearAllMocks
@@ -14,7 +15,6 @@ import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 import stubs.stubAddress
-import utils.DispatcherTestRule
 import kotlin.test.assertEquals
 
 @ExperimentalCoroutinesApi
@@ -66,10 +66,10 @@ class MainViewModelTest {
     }
 
     @Test
-    fun `getAddressFailure Should expose ErrorToast action When getAddress return failure result`() {
+    fun `getAddressFailure Should expose ErrorMessage action When getAddress return failure result`() {
         // Given
         val throwable = Throwable(GENERIC_ERROR_MESSAGE)
-        val expectedAction = MainViewAction.ErrorToast(throwable.message)
+        val expectedAction = MainViewAction.ErrorMessage(throwable.message)
         coEvery { getAddressUseCase(any()) } throws throwable
 
         // When
@@ -80,7 +80,7 @@ class MainViewModelTest {
             subject.action.test {
                 val result = awaitItem()
                 assertEquals(expectedAction, result)
-                assertEquals(throwable.message, (result as MainViewAction.ErrorToast).message)
+                assertEquals(throwable.message, (result as MainViewAction.ErrorMessage).message)
                 cancelAndConsumeRemainingEvents()
             }
         }

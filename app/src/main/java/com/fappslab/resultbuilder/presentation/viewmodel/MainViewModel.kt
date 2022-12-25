@@ -43,7 +43,7 @@ class MainViewModel(
 
     private fun getAddressFailure(cause: Throwable) {
         viewModelScope.launch {
-            _action.emit(MainViewAction.ErrorToast(cause.message))
+            _action.emit(MainViewAction.ErrorMessage(cause.message))
         }
     }
 

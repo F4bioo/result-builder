@@ -10,18 +10,13 @@ import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.runTest
 import org.junit.After
 import org.junit.Before
-import org.junit.Rule
 import org.junit.Test
 import stubs.stubAddress
-import utils.DispatcherTestRule
 import kotlin.test.assertEquals
 import kotlin.test.assertFailsWith
 
 @ExperimentalCoroutinesApi
 class GetAddressUseCaseTest {
-
-    @get:Rule
-    val dispatcherRule = DispatcherTestRule()
 
     private val address = stubAddress()
     private val postalCodeRepository: PostalCodeRepository = mockk()

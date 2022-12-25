@@ -1,5 +1,7 @@
 package com.fappslab.resultbuilder.presentation.viewmodel
 
-sealed class MainViewAction {
-    data class ErrorToast(val message: String?) : MainViewAction()
+import com.fappslab.resultbuilder.arch.viewmodel.Action
+
+sealed class MainViewAction : Action {
+    data class ErrorMessage(val message: String?) : MainViewAction()
 }

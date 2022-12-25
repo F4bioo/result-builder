@@ -1,7 +1,6 @@
 package com.fappslab.resultbuilder.presentation
 
 import android.os.Bundle
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
 import androidx.lifecycle.Lifecycle
@@ -11,6 +10,7 @@ import com.fappslab.resultbuilder.databinding.ActivityMainBinding
 import com.fappslab.resultbuilder.presentation.viewmodel.MainViewAction
 import com.fappslab.resultbuilder.presentation.viewmodel.MainViewModel
 import com.fappslab.resultbuilder.presentation.viewmodel.MainViewState
+import com.google.android.material.snackbar.Snackbar
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -40,9 +40,7 @@ class MainActivity : AppCompatActivity() {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
                 viewModel.action.collect { action ->
                     when (action) {
-                        is MainViewAction.ErrorToast -> {
-                            showErrorToast(action.message)
-                        }
+                        is MainViewAction.ErrorMessage -> showError(action.message)
                     }
                 }
             }
@@ -66,7 +64,7 @@ class MainActivity : AppCompatActivity() {
         inputAreaCode.setText(address?.areaCode)
     }
 
-    private fun showErrorToast(message: String?) {
-        Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
+    private fun showError(message: String?) {
+        message?.let { Snackbar.make(binding.root, it, Snackbar.LENGTH_SHORT).show() }
     }
 }
