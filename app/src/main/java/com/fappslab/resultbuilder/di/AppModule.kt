@@ -15,29 +15,36 @@ import org.koin.core.module.Module
 import org.koin.core.scope.Scope
 import org.koin.dsl.module
 
-val presentationModule: Module = module {
-    viewModel {
-        MainViewModel(
-            getAddressUseCase = GetAddressUseCase(
-                repository = getPostalCodeRepository()
+object AppModule {
+
+    val modules
+        get() = presentationModule + dataModule
+
+    private val presentationModule: Module = module {
+        viewModel {
+            MainViewModel(
+                getAddressUseCase = GetAddressUseCase(
+                    repository = getPostalCodeRepository()
+                )
+            )
+        }
+    }
+
+    private val dataModule: Module = module {
+        single<HttpClient> {
+            HttpClientImpl(
+                retrofit = RetrofitClient(BuildConfig.BASE_URL).create()
+            )
+        }
+    }
+
+    private fun Scope.getPostalCodeRepository(): PostalCodeRepository =
+        PostalCodeRepositoryImpl(
+            dataSource = PostalCodeDataSourceImpl(
+                service = get<HttpClient>().create(
+                    clazz = PostalCodeService::class.java
+                )
             )
         )
-    }
 }
 
-val dataModule: Module = module {
-    single<HttpClient> {
-        HttpClientImpl(
-            retrofit = RetrofitClient(BuildConfig.BASE_URL).create()
-        )
-    }
-}
-
-private fun Scope.getPostalCodeRepository(): PostalCodeRepository =
-    PostalCodeRepositoryImpl(
-        dataSource = PostalCodeDataSourceImpl(
-            service = get<HttpClient>().create(
-                clazz = PostalCodeService::class.java
-            )
-        )
-    )

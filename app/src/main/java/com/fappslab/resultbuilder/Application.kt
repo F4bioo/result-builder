@@ -1,8 +1,7 @@
 package com.fappslab.resultbuilder
 
 import android.app.Application
-import com.fappslab.resultbuilder.di.dataModule
-import com.fappslab.resultbuilder.di.presentationModule
+import com.fappslab.resultbuilder.di.AppModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import org.koin.core.context.loadKoinModules
@@ -28,6 +27,6 @@ class Application : Application() {
         androidContext(androidContext = this@Application)
 
         // Koin Load
-        loadKoinModules(modules = presentationModule + dataModule)
+        loadKoinModules(modules = AppModule.modules)
     }
 }
