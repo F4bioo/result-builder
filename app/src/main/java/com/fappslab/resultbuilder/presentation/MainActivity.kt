@@ -48,7 +48,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setupListeners() = binding.run {
-        binding.buttonSearch.setOnClickListener {
+        buttonSearch.setOnClickListener {
             viewModel.getAddress(inputCode.text.toString())
         }
     }
