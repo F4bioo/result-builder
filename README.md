@@ -72,4 +72,3 @@ class MainViewModel(
 
 
 ![image](images/main-screen.png)
-
